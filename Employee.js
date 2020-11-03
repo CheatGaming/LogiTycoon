@@ -2,7 +2,7 @@
 // @name         Employee
 // @namespace    https://github.com/TransportScripts/TransportAutomation/
 // @author       TransportScripts
-// @version      0.2
+// @version      0.3
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=employees_select&e=*
 // @match        https://www.logitycoon.com/eu1/index.php?a=employees_sleep&e=*
@@ -13,5 +13,6 @@
 (function() {
     'use strict';
 
+    //Sleeping because of entering URL. Close window.
     window.close();
 })();
