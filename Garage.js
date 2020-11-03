@@ -2,7 +2,7 @@
 // @name         Garage
 // @namespace    https://github.com/TransportScripts/TransportAutomation/
 // @author       TransportScripts
-// @version      0.1
+// @version      0.2
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=garage
 // @grant        none
@@ -32,13 +32,14 @@
     }
 
     function Open(){
-        $('.mt-action-row').each((i,e) => {
-            let state = $(e).find('.mt-action-desc')[0].innerText.includes('Nothing');
+$('.mt-action-row').each((i,e) => {
+            let isNothing = $(e).find('.mt-action-desc')[0].innerText.includes('Nothing');
             let isTruck = $(e).find('.mt-action-author')[0].innerText.includes('Truck');
             let isTrailer = $(e).find('.mt-action-author')[0].innerText.includes('Trailer');
             let id = $(e).find('input[value=Information]').attr('onclick').split('=')[3].split("'")[0];
+            let percent = $(e).find('b:contains(%)')[0].innerText;
 
-            if(state.action == 'Nothing'){
+            if(isNothing && percent !== '100 %'){
                 if(isTruck){
                     trucks.push(id);
                 }
