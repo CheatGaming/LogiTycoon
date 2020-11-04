@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Truck/Trailer
-// @namespace    https://github.com/TransportScripts/TransportAutomation/
+// @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       TransportScripts
 // @version      0.1
 // @description  try to take over the world!
@@ -8,7 +8,7 @@
 // @match        https://www.logitycoon.com/eu1/index.php?a=garage_trailer&t=*
 // @match        https://www.logitycoon.com/eu1/index.php?a=garage_truck_ftlock
 // @grant        none
-// @downloadURL  https://raw.githubusercontent.com/TransportScripts/TransportAutomation/main/TruckTrailer.js
+// @downloadURL  https://raw.githubusercontent.com/CheatGaming/LogiTycoon/main/TruckTrailer.js
 // ==/UserScript==
 
 (function() {
