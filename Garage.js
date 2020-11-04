@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         Garage
-// @namespace    https://github.com/TransportScripts/TransportAutomation/
+// @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       TransportScripts
 // @version      0.2
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=garage
 // @grant        none
-// @downloadURL  https://raw.githubusercontent.com/TransportScripts/TransportAutomation/main/Garage.js
+// @downloadURL  https://raw.githubusercontent.com/CheatGaming/LogiTycoon/main/Garage.js
 // ==/UserScript==
 
 (function() {
