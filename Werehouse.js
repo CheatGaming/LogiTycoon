@@ -2,7 +2,7 @@
 // @name         Werehouse
 // @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       CheatGaming
-// @version      0.2
+// @version      0.3
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=warehouse
 // @grant        none
@@ -30,7 +30,7 @@
         
         if(windows.length){
             setInterval(()=>{
-                if(windows.every(w => w.closed){
+                if(windows.every(w => w.closed)){
                     Refresh();
                 }
             }, 500);
