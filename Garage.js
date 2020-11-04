@@ -2,7 +2,7 @@
 // @name         Garage
 // @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       TransportScripts
-// @version      0.2
+// @version      0.3
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=garage
 // @grant        none
@@ -13,6 +13,7 @@
     'use strict';
     let trucks = [];
     let trailers = [];
+    let windows = [];
 
     function ParseInnerText(t) {
         try{
@@ -27,12 +28,16 @@
         }
     }
 
+    function AutoRefresh( t ) {
+        setTimeout("location.reload(true);", t);
+    }
+
     function onlyUnique(value, index, self) {
         return self.indexOf(value) === index;
     }
 
     function Open(){
-$('.mt-action-row').each((i,e) => {
+        $('.mt-action-row').each((i,e) => {
             let isNothing = $(e).find('.mt-action-desc')[0].innerText.includes('Nothing');
             let isTruck = $(e).find('.mt-action-author')[0].innerText.includes('Truck');
             let isTrailer = $(e).find('.mt-action-author')[0].innerText.includes('Trailer');
@@ -49,33 +54,27 @@ $('.mt-action-row').each((i,e) => {
             }
         })
 
-//         $($('.mt-actions')[0]).find('input[value=Information]').each((i,e)=> {
-//             trucks.push($(e).attr('onclick').split('=')[3].split("'")[0])
-//         });
-
-//         $($('.mt-actions')[1]).find('input[value=Information]').each((i,e)=> {
-//             trailers.push($(e).attr('onclick').split('=')[3].split("'")[0])
-//         });
-
         trucks = trucks.filter(onlyUnique);
         trailers = trailers.filter(onlyUnique);
 
         trucks.forEach(id => {
-            window.open('https://www.logitycoon.com/eu1/index.php?a=garage_truck&t=' + id, '_blank');
+            windows.push(window.open('https://www.logitycoon.com/eu1/index.php?a=garage_truck&t=' + id, '_blank'));
         })
 
         trailers.forEach(id => {
-            window.open('https://www.logitycoon.com/eu1/index.php?a=garage_trailer&t=' + id, '_blank');
+            windows.push(window.open('https://www.logitycoon.com/eu1/index.php?a=garage_trailer&t=' + id, '_blank'));
         })
 
-        window.close();
+        if(windows.length > 0) {
+            setInterval(() => {
+                if(windows.every(w => w.closed)){
+                    location.reload();
+                }
+            }, 500);
+        } else {
+            AutoRefresh(10000);
+        }
     }
 
-//     function AutoRefresh( t ) {
-//         setTimeout("location.reload(true);", t);
-//     }
-//     AutoRefresh(10000);
-
     Open();
-
 })();
