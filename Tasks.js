@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         Tasks
-// @namespace    https://github.com/TransportScripts/TransportAutomation/
+// @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       TransportScripts
 // @version      0.1
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=tasks
 // @grant        none
-// @downloadURL  https://raw.githubusercontent.com/TransportScripts/TransportAutomation/main/Tasks.js
+// @downloadURL  https://raw.githubusercontent.com/CheatGaming/LogiTycoon/main/Tasks.js
 // ==/UserScript==
 
 (function() {
