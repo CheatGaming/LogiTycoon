@@ -2,7 +2,7 @@
 // @name         Freight
 // @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       TransportScripts
-// @version      0.1
+// @version      0.2
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=freight&n=*
 // @grant        none
@@ -20,7 +20,7 @@
     }
 
     if(a == '13 %'){ //loading
-        window.close();
+        BackToWerehouse();
     }
 
     if(a == '25 %'){
@@ -30,7 +30,7 @@
     }
 
     if(a == '38 %'){ //driving
-        window.close();
+        BackToWerehouse();
     }
 
     if(a == '50 %'){
@@ -38,7 +38,7 @@
     }
 
     if(a == '63 %'){ //unloading
-        window.close();
+        AcceptFreight();
     }
 
     if(a == '75 %'){
@@ -47,21 +47,17 @@
     }
 
     if(a == '88 %'){
-        window.close();
+        BackToWerehouse();
     }
 
-    function CheckReady() {
-        let ready_text = $('#ready').text();
-
-        if(ready_text == '00:00:02') {
-            location.reload(true);
-        }
+    function AcceptFreight(){
+        let from = $('div.row.static-info:contains(Destination)').find('.value').text().trim();
+        const tripsUrl = 'https://www.logitycoon.com/eu1/index.php?a=trips&from=';
+        window.location.href = tripsUrl + from;
     }
 
-    function AutoRefresh( t ) {
-        setTimeout("location.reload(true);", t);
+    function BackToWerehouse(){
+        window.location.href = 'https://www.logitycoon.com/eu1/index.php?a=warehouse';
     }
 
-    setInterval(CheckReady, 1000);
-    AutoRefresh(10000);
 })();
