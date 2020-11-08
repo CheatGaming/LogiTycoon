@@ -1,4 +1,4 @@
-export const Utils = {
+const Utils = {
   Refresh: Refresh,
   GoTo: GoTo(),
   Open: Open(),
