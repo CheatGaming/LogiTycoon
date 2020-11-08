@@ -1,3 +1,5 @@
+'use strict';
+
 const Utils = {
   Refresh: Refresh,
   GoTo: GoTo(),
