@@ -1,5 +1,5 @@
 (function(scope){
-  this.Utils = {
+  scope.Utils = {
     Refresh: Refresh,
     GoTo: GoTo(),
     Open: Open(),
@@ -83,7 +83,7 @@
     let p = '';
     let properties = Object.getOwnPropertyNames(params);
     properties.forEach(prop => {
-      p += prop + '=' params[prop] + '&';
+      p += prop + '=' + params[prop] + '&';
     });
 
     return p;
