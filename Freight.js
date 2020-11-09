@@ -2,7 +2,7 @@
 // @name         Freight
 // @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       TransportScripts
-// @version      0.5
+// @version      0.6
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=freight&n=*
 // @grant        none
@@ -34,6 +34,11 @@
 
     if(a == '38 %'){ //driving
         Utils.GoTo.warehouse();
+    }
+
+    if(a == '40 %'){ //Out of Fuel
+        freightcontinue();
+        setTimeout(()=> Utils.GoTo.warehouse(), 50);
     }
 
     if(a == '50 %'){
