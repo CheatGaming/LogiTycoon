@@ -1,55 +1,41 @@
 // ==UserScript==
-// @name         Werehouse
+// @name         Warehouse
 // @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       CheatGaming
-// @version      0.5
+// @version      0.6
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=warehouse
 // @grant        none
-// @downloadURL  https://raw.githubusercontent.com/CheatGaming/LogiTycoon/main/Werehouse.js
+// @downloadURL  https://raw.githubusercontent.com/CheatGaming/LogiTycoon/main/Warehouse.js
+// @require      https://raw.githubusercontent.com/CheatGaming/LogiTycoon/main/shared/Utils.js
 // ==/UserScript==
 
 (function() {
     'use strict';
     let freights = [];
-    let windows = [];
-
-    window.onbeforeunload = function(event) {
-        windows.forEach(w => w.close());
-    }
-
-    function OpenFreight(freight){
-        if(freight.needsAction){
-            window.location.href = 'https://www.logitycoon.com/eu1/index.php?a=freight&n=' + freight.id;
-        }
-    }
-    function OpenFuelStation(){
-        window.open('https://www.logitycoon.com/eu1/index.php?a=fuelstation', '_blank');
-    }
-
-    function Refresh() {
-        location.reload(true);
-    }
 
     function Process(){
-        let arrived = freights.some(f => f.status === 'Arrived' && f.truckStatus === 'Trucks - Available');
+        let arrived = freights.some(f => f.status === 'Arrived');
         if(arrived){
-            OpenFuelStation();
+            Utils.Open.fuelStation();
         }
 
         let freight = freights.find(f => f.needsAction);
+        
         if(!!freight) {
-            OpenFreight(freight);
+            if(freight.needsAction){
+                Utils.Open.freight(freight.id);
+            }
         }
 
         if(windows.length){
             setInterval(()=>{
                 if(windows.every(w => w.closed)){
-                    Refresh();
+                    Utils.Refresh();
                 }
             }, 500);
         } else {
-            setTimeout(Refresh, 10000);
+            Utils.Refresh(10000);
         }
     }
 

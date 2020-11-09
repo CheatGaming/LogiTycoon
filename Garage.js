@@ -2,35 +2,18 @@
 // @name         Garage
 // @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       TransportScripts
-// @version      0.3
+// @version      0.4
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=garage
 // @grant        none
 // @downloadURL  https://raw.githubusercontent.com/CheatGaming/LogiTycoon/main/Garage.js
+// @require      https://raw.githubusercontent.com/CheatGaming/LogiTycoon/main/shared/Utils.js
 // ==/UserScript==
 
 (function() {
     'use strict';
     let trucks = [];
     let trailers = [];
-    let windows = [];
-
-    function ParseInnerText(t) {
-        try{
-            return {
-                action: t.split(': ')[1].split('\n')[0]
-            }
-        }
-        catch (e){
-            return {
-                action: ''
-            }
-        }
-    }
-
-    function AutoRefresh( t ) {
-        setTimeout("location.reload(true);", t);
-    }
 
     function onlyUnique(value, index, self) {
         return self.indexOf(value) === index;
@@ -58,21 +41,21 @@
         trailers = trailers.filter(onlyUnique);
 
         trucks.forEach(id => {
-            windows.push(window.open('https://www.logitycoon.com/eu1/index.php?a=garage_truck&t=' + id, '_blank'));
+            Utils.Open.truck(id);
         })
 
         trailers.forEach(id => {
-            windows.push(window.open('https://www.logitycoon.com/eu1/index.php?a=garage_trailer&t=' + id, '_blank'));
+            Utils.Open.trailer(id);
         })
 
         if(windows.length > 0) {
             setInterval(() => {
-                if(windows.every(w => w.closed)){
-                    location.reload();
+                if(Utils.Status.windows.every(w => w.closed)){
+                    Utils.Refresh();
                 }
             }, 500);
         } else {
-            AutoRefresh(10000);
+            Utils.Refresh(10000);
         }
     }
 

@@ -2,7 +2,7 @@
 // @name         Trips
 // @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       TransportScripts
-// @version      0.2
+// @version      0.3
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=trips*
 // @grant        none
@@ -11,40 +11,50 @@
 
 (function() {
     'use strict';
-    var urlParams = new URLSearchParams(window.location.search);
-
-    function BackToWerehouse(){
-        window.location.href = 'https://www.logitycoon.com/eu1/index.php?a=warehouse';
-    }
+    let urlParams = new URLSearchParams(window.location.search);
+    let from = '';
+    let type = '';
 
     try{
-        if(urlParams.has('from')){
-            const trips = [];
-            $('tbody').first().find('tr').each((i,e) => {
-                let row = $(e);
-                let split = e.innerText.split(/\t|\n|€/).filter(Boolean);
-                let earnings = parseInt(split[0].replace('.',''));
-                let distance = parseInt(split[3]);
-                trips.push({
-                    from:  split[1].trim(),
-                    to:    split[2].trim(),
-                    earnings: earnings,
-                    distance: distance,
-                    onClick: row.attr('onclick'),
-                    profit: earnings/distance
-                });
-            });
-            trips.sort((a, b) => b.profit - a.profit );
-
-            let from = urlParams.get('from').trim();
-            let trip = trips.find(t => t.from === from);
-            eval(trip.onClick);
-            $('#submit-trips').click();
+        if(!urlParams.has('from')){
+            Utils.GoTo.warehouse();
         } else {
-            BackToWerehouse();
+            from = urlParams.get('from').trim();
         }
+        if(urlParams.has('type')){
+            type = urlParams.get('type').trim();
+        }
+
+        const trips = [];
+        $('tbody').first().find('tr').each((i,e) => {
+            let row = $(e);
+            let split = e.innerText.split(/\t|\n|€/).filter(Boolean);
+            let earnings = parseInt(split[0].replace('.',''));
+            let distance = parseInt(split[3]);
+
+            trips.push({
+                from: split[1].trim(),
+                to: split[2].trim(),
+                earnings: earnings,
+                distance: distance,
+                type: split[4],
+                onClick: row.attr('onclick'),
+                profit: earnings/distance
+            });
+        });
+
+        if(!!from){
+            trips = trips.filter(t => t.from === from);
+        }
+        if(!!type){
+            trips = trips.filter(t => t.type === type);
+        }
+        
+        trips.sort((a, b) => b.profit - a.profit );
+        eval(trips[0].onClick);
+        $('#submit-trips').click();
     } catch (e) {
-        BackToWerehouse();
+        Utils.GoTo.warehouse();
     }
 
 })();
