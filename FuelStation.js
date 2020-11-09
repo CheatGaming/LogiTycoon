@@ -24,6 +24,6 @@
         setTimeout("window.close()", t);
     }
 
-    Close(700);
+    Close(1000);
     Refuel();
 })();
