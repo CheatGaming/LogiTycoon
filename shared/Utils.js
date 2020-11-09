@@ -3,6 +3,8 @@
   const fuelStationUrl = 'https://www.logitycoon.com/eu1/index.php?a=fuelstation';
   const tripsUrl = 'https://www.logitycoon.com/eu1/index.php?a=trips';
   const freightUrl_ = 'https://www.logitycoon.com/eu1/index.php?a=freight&n=';
+  const truckUrl_ = 'https://www.logitycoon.com/eu1/index.php?a=garage_truck&t=';
+  const trailerUrl_ = 'https://www.logitycoon.com/eu1/index.php?a=garage_trailer&t=';
 
   const status = {
     windows: [],
@@ -14,7 +16,9 @@
       warehouse: () => OpenWindow(warehouseUrl),
       fuelStation: () => OpenWindow(fuelStationUrl),
       trips: (params) => OpenWindow(tripsUrl, params),
-      freight: (id) => OpenWindow(freightUrl_ + id)
+      freight: (id) => OpenWindow(freightUrl_ + id),
+      truck: (id) => OpenWindow(truckUrl_ + id),
+      trailer: (id) => OpenWindow(trailerUrl_ + id)
     } 
   };
 
@@ -31,7 +35,9 @@
       warehouse: () => GoToUrl(warehouseUrl),
       fuelStation: () => GoToUrl(fuelStationUrl),
       trips: (params) => GoToUrl(tripsUrl, params),
-      freight: (id) => GoToUrl(freightUrl_ + id)
+      freight: (id) => GoToUrl(freightUrl_ + id),
+      truck: (id) => GoToUrl(truckUrl_ + id),
+      trailer: (id) => GoToUrl(trailerUrl_ + id)
     }
   };
 
