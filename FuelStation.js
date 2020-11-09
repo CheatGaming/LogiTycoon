@@ -2,7 +2,7 @@
 // @name         Fuel Station
 // @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       TransportScripts
-// @version      0.3
+// @version      0.4
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=fuelstation*
 // @grant        none
@@ -24,6 +24,6 @@
         setTimeout("window.close()", t);
     }
 
-    Close(500);
+    Close(700);
     Refuel();
 })();
