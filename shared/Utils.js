@@ -1,12 +1,4 @@
 (function(scope){
-  scope.Utils = {
-    Refresh: Refresh,
-    GoTo: GoTo(),
-    Open: Open(),
-    Init: Init,
-    Status: status
-  };
-
   const warehouseUrl = 'https://www.logitycoon.com/eu1/index.php?a=warehouse';
   const fuelStationUrl = 'https://www.logitycoon.com/eu1/index.php?a=fuelstation';
   const tripsUrl = 'https://www.logitycoon.com/eu1/index.php?a=trips';
@@ -88,4 +80,12 @@
 
     return p;
   }
+
+  scope.Utils = {
+    Refresh: Refresh,
+    GoTo: GoTo(),
+    Open: Open(),
+    Init: Init,
+    Status: status
+  };
 })(this)
