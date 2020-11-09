@@ -16,14 +16,15 @@
       trips: (params) => OpenWindow(tripsUrl, params),
       freight: (id) => OpenWindow(freightUrl_ + id)
     } 
-  }
+  };
 
   function Refresh( t ) {
     if(!!t && t > 0){
       setTimeout(location.reload(true), t);
+    } else {
+      location.reload(true);
     }
-    location.reload(true);
-  }
+  };
 
   function GoTo() {
     return {
@@ -32,15 +33,16 @@
       trips: (params) => GoToUrl(tripsUrl, params),
       freight: (id) => GoToUrl(freightUrl_ + id)
     }
-  }
+  };
 
   function OpenWindow(url, params) {
     let fullUrl = GetParametrizedUrl(url, params);
     let _window = window.open(fullUrl, '_blank');
+    
     status.windows.push(_window);
 
     return _window;
-  }
+  };
 
   function Init() {
     if(!status.initiated) {
@@ -49,11 +51,11 @@
       }
       status.initiated = true;
     }
-  }
+  };
 
   function GoToUrl(url) {
     window.location.href = url;
-  }
+  };
 
   function GetParametrizedUrl(url, params) {
     let p = '';
@@ -69,17 +71,18 @@
     }
 
     return url;
-  }
+  };
 
   function SerializeParams(params) {
     let p = '';
     let properties = Object.getOwnPropertyNames(params);
+    
     properties.forEach(prop => {
       p += prop + '=' + params[prop] + '&';
     });
 
     return p;
-  }
+  };
 
   scope.Utils = {
     Refresh: Refresh,
@@ -88,4 +91,4 @@
     Init: Init,
     Status: status
   };
-})(this)
+})(window);
