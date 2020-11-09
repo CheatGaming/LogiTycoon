@@ -2,7 +2,7 @@
 // @name         Garage
 // @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       TransportScripts
-// @version      0.4
+// @version      0.5
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=garage
 // @grant        none

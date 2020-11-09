@@ -2,7 +2,7 @@
 // @name         Warehouse
 // @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       CheatGaming
-// @version      0.10
+// @version      0.11
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=warehouse
 // @grant        none
