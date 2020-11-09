@@ -2,7 +2,7 @@
 // @name         Warehouse
 // @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       CheatGaming
-// @version      0.9
+// @version      0.10
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=warehouse
 // @grant        none
@@ -16,22 +16,22 @@
 
     function Process(){
         let arrived = freights.some(f => f.status === 'Arrived');
-        let outOfFuel = freights.some(f => f.status === 'Out of fuel...')
+        let outOfFuel = freights.some(f => f.status === 'Out of Fuel...')
         if(arrived || outOfFuel){
             // Otherwise it's closed, before refuel starts
             // Utils.Open.fuelStation();
             window.open('https://www.logitycoon.com/eu1/index.php?a=fuelstation', '_blank');
         }
-        
+
         let freight = freights.find(f => f.needsAction);
-        
+
         if(!!freight && freight.needsAction) {
             Utils.GoTo.freight(freight.id);
         }
 
-        if(windows.length){
+        if(Utils.Status.windows.length){
             setInterval(()=>{
-                if(windows.every(w => w.closed)){
+                if(Utils.Status.windows.every(w => w.closed)){
                     Utils.Refresh();
                 }
             }, 500);
@@ -41,7 +41,7 @@
     }
 
     function GetStatus(){
-        let actions = '|Accepted|Loaded|Arrived|Unloaded|';
+        let actions = '|Accepted|Loaded|Arrived|Unloaded|Out of Fuel...|';
         let pendingAction = '|Loading...|Driving...|Finishing...|';
         let truckStatuses = '|Trucks - Available|Truck - Selected|';
         let trailerStatuses = '|Trailers - Available|Trailer - Selected|';
