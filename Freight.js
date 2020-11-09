@@ -2,7 +2,7 @@
 // @name         Freight
 // @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       TransportScripts
-// @version      0.3
+// @version      0.4
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=freight&n=*
 // @grant        none
@@ -12,7 +12,7 @@
 
 (function() {
     'use strict';
-    var a = $('span.badge-success:eq(1)').text();
+    var a = $('a:contains(Progress)>span.badge-success').text();
 
     if(a == '0 %'){
         freightautowhemployee();
@@ -54,7 +54,10 @@
     function AcceptFreight(){
         let from = $('div.row.static-info:contains(Destination)').find('.value').text().trim();
         let type = $('div.row.static-info:contains(Type)').find('.value').text().trim();
+
         Utils.GoTo.trips({from: from, type: type});
     }
+
+    Utils.Refresh(10000);
 
 })();
