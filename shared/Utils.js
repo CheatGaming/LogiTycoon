@@ -1,5 +1,3 @@
-'use strict';
-
 const Utils = {
   Refresh: Refresh,
   GoTo: GoTo(),
@@ -7,7 +5,6 @@ const Utils = {
   Init: Init,
   Status: status
 }
-
 
 const warehouseUrl = 'https://www.logitycoon.com/eu1/index.php?a=warehouse';
 const fuelStationUrl = 'https://www.logitycoon.com/eu1/index.php?a=fuelstation';
@@ -91,3 +88,4 @@ function SerializeParams(params) {
   return p;
 }
 
+export Utils;
