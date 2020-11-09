@@ -43,12 +43,9 @@
   };
 
   function Refresh( t ) {
-    console.log(t);
     if(!!t && t > 0){
-      console.log('setting up Timeout');
-      setTimeout(location.reload(true), t);
+      setTimeout(Refresh, t);
     } else {
-      console.log('instant reload');
       location.reload(true);
     }
   };
