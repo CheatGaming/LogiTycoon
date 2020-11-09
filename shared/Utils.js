@@ -22,14 +22,6 @@
     } 
   };
 
-  function Refresh( t ) {
-    if(!!t && t > 0){
-      setTimeout(location.reload(true), t);
-    } else {
-      location.reload(true);
-    }
-  };
-
   function GoTo() {
     return {
       warehouse: () => GoToUrl(warehouseUrl),
@@ -48,6 +40,17 @@
     status.windows.push(_window);
 
     return _window;
+  };
+
+  function Refresh( t ) {
+    console.log(t);
+    if(!!t && t > 0){
+      console.log('setting up Timeout');
+      setTimeout(location.reload(true), t);
+    } else {
+      console.log('instant reload');
+      location.reload(true);
+    }
   };
 
   function Init() {
@@ -90,12 +93,13 @@
     return p;
   };
 
-  Init();
-
   scope.Utils = {
     Refresh: Refresh,
     GoTo: GoTo(),
     Open: Open(),
     Status: status
   };
+  
+  Init();
+
 })(window);
