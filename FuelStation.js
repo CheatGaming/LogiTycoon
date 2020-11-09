@@ -13,9 +13,11 @@
     'use strict';
 
     function Refuel() {
-        $('button.blue-madison').click();
+        $('button[onclick*=refuelft]').click();
         setTimeout(50);
-        $('button.red-sunglo').click();
+        $('button[onclick*=refuelfc]').click();
+        setTimeout(50);
+        $('button[onclick*=refuel]').click();
     }
 
     function Close( t ) {
