@@ -2,7 +2,7 @@
 // @name         Warehouse
 // @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       CheatGaming
-// @version      0.6
+// @version      0.7
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=warehouse
 // @grant        none
@@ -24,7 +24,7 @@
         
         if(!!freight) {
             if(freight.needsAction){
-                Utils.Open.freight(freight.id);
+                Utils.GoTo.freight(freight.id);
             }
         }
 
