@@ -2,11 +2,12 @@
 // @name         Trips
 // @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       TransportScripts
-// @version      0.3
+// @version      0.4
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=trips*
 // @grant        none
 // @downloadURL  https://raw.githubusercontent.com/CheatGaming/LogiTycoon/main/Trips.js
+// @require      https://raw.githubusercontent.com/CheatGaming/LogiTycoon/main/shared/Utils.js
 // ==/UserScript==
 
 (function() {
