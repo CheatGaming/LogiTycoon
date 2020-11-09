@@ -84,11 +84,12 @@
     return p;
   };
 
+  Init();
+
   scope.Utils = {
     Refresh: Refresh,
     GoTo: GoTo(),
     Open: Open(),
-    Init: Init,
     Status: status
   };
 })(window);
