@@ -59,8 +59,10 @@
     }
   };
 
-  function GoToUrl(url) {
-    window.location.href = url;
+  function GoToUrl(url, params) {
+    let fullUrl = GetParametrizedUrl(url, params);
+
+    window.location.href = fullUrl;
   };
 
   function GetParametrizedUrl(url, params) {
@@ -72,7 +74,7 @@
       if(url.includes('?')){
         url += '&' + p;
       } else {
-        url += '&' + p;
+        url += '?' + p;
       }
     }
 
