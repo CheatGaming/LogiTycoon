@@ -2,7 +2,7 @@
 // @name         Freight
 // @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       TransportScripts
-// @version      0.8
+// @version      0.9
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=freight&n=*
 // @grant        none
@@ -18,7 +18,6 @@
         freightautowhemployee();
         freightautotrailer();
         freightstartloading();
-        setTimeout(Utils.GoTo.warehouse, 50);
     }
 
     if(a == '13 %'){ //loading
@@ -26,10 +25,14 @@
     }
 
     if(a == '25 %'){
+        let tires = parseInt($('div.row.static-info:contains(Tires)').find('.value').text().trim());
+        if(tires < 10) {
+            // "location.href='index.php?a=garage_truck&t=388259';"
+            let garage__href = $('div.row.static-info:contains(Truck)>div.value>button').last().attr('onclick');
+        }
         freightautowhemployee();
         freightautotruck();
         freightstartdriving();
-        setTimeout(Utils.GoTo.warehouse, 50);
     }
 
     if(a == '38 %'){ //driving
@@ -55,7 +58,6 @@
     if(a == '75 %'){
         freightautowhemployee();
         freightstartfinishing();
-        setTimeout(Utils.GoTo.warehouse, 50);
     }
 
     if(a == '88 %'){
