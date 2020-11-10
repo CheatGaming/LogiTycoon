@@ -20,10 +20,6 @@
         $('button[onclick*=refuel]').click();
     }
 
-    function Close( t ) {
-        setTimeout("window.close()", t);
-    }
-
-    Close(500);
+    setTimeout("location.reload(true);", 15000);
     Refuel();
 })();
