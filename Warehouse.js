@@ -2,7 +2,7 @@
 // @name         Warehouse
 // @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       CheatGaming
-// @version      0.11
+// @version      0.12
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=warehouse
 // @grant        none
@@ -15,13 +15,7 @@
     let freights = [];
 
     function Process(){
-        let arrived = freights.some(f => f.status === 'Arrived');
-        let outOfFuel = freights.some(f => f.status === 'Out of Fuel...')
-        if(arrived || outOfFuel){
-            // Otherwise it's closed, before refuel starts
-            // Utils.Open.fuelStation();
-            window.open('https://www.logitycoon.com/eu1/index.php?a=fuelstation', '_blank');
-        }
+//         window.opener.AddAction(freights);
 
         let freight = freights.find(f => f.needsAction);
 
