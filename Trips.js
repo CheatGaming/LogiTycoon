@@ -2,7 +2,7 @@
 // @name         Trips
 // @namespace    https://github.com/CheatGaming/LogiTycoon/
 // @author       TransportScripts
-// @version      0.8
+// @version      0.9
 // @description  try to take over the world!
 // @match        https://www.logitycoon.com/eu1/index.php?a=trips*
 // @grant        none
@@ -20,12 +20,11 @@
     try{
         if(!urlParams.has('from')){
             Utils.GoTo.warehouse();
-        } else {
-            from = urlParams.get('from').trim();
+            return;
         }
-        if(urlParams.has('type')){
-            type = urlParams.get('type').trim();
-        }
+
+        from = urlParams.get('from').trim();
+        type = urlParams.get('type').trim();
 
         $('tbody').first().find('tr').each((i,e) => {
             let row = $(e);
@@ -44,15 +43,14 @@
             });
         });
 
-        if(!!from){
-            trips = trips.filter(t => t.from === from);
-        }
-        if(!!type){
-            trips = trips.filter(t => t.type === type);
-        }
-       
         trips.sort((a, b) => b.profit - a.profit );
-        eval(trips[0].onClick);
+        let trip = trips.find(t => t.from === from && t.type === type);
+
+        if(!!!trip){
+            Utils.GoTo.warehouse();
+        }
+
+        eval(trip.onClick);
         $('#submit-trips').click();
     } catch (e) {
         Utils.GoTo.warehouse();
