@@ -7,7 +7,7 @@
 // @match        https://www.logitycoon.com/eu1/index.php?a=freight&n=*
 // @grant        none
 // @downloadURL  https://raw.githubusercontent.com/CheatGaming/LogiTycoon/main/Freight.js
-// @require      https://raw.githubusercontent.com/CheatGaming/LogiTycoon/main/shared/Utils.js
+// @require      https://raw.githubusercontent.com/CheatGaming/LogiTycoon/main/src/shared/Utils.js
 // ==/UserScript==
 
 (function() {
